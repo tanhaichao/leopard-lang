@@ -7,7 +7,6 @@
 	</parent>
 	<artifactId>leopard-timer</artifactId>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>commons-logging</groupId>

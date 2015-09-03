@@ -2,6 +2,7 @@ package io.leopard.json;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 
@@ -41,6 +42,12 @@ public class JsonFastJsonImpl implements IJson {
 			list.add(this.toObject(json, clazz));
 		}
 		return list;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> toMap(String json) {
+		return toObject(json, Map.class);
 	}
 
 }

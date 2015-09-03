@@ -1,6 +1,7 @@
 package io.leopard.json;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IJson {
 
@@ -35,4 +36,5 @@ public interface IJson {
 
 	<T> List<T> toListObject(List<String> jsonList, Class<T> clazz);
 
+	Map<String, Object> toMap(String json);
 }

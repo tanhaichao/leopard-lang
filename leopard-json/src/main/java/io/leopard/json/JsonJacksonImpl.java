@@ -2,6 +2,7 @@ package io.leopard.json;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.codehaus.jackson.map.DeserializationConfig;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -190,4 +191,9 @@ public class JsonJacksonImpl implements IJson {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> toMap(String json) {
+		return toObject(json, Map.class);
+	}
 }

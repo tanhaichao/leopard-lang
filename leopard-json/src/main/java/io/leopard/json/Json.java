@@ -45,6 +45,10 @@ public class Json {
 		return instance.toObject(json, clazz);
 	}
 
+	public static Map<String, Object> toMap(String json) {
+		return instance.toMap(json);
+	}
+
 	public static <T> List<T> toListObject(String content, Class<T> clazz) {
 		return instance.toListObject(content, clazz);
 	}

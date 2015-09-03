@@ -22,5 +22,6 @@
 		<module>leopard-timer</module>
 		<module>leopard-command</module>
 		<module>leopard-servlet</module>
+		<module>leopard-lang</module>
 	</modules>
 </project>

@@ -28,7 +28,7 @@ public abstract class RegisterHandlerInterceptor implements HandlerInterceptor, 
 
 	}
 
-	private boolean isHandlerMapping(BeanDefinition beanDefinition) {
+	protected boolean isHandlerMapping(BeanDefinition beanDefinition) {
 		String beanClassName = beanDefinition.getBeanClassName();
 		Class<?> clazz;
 		try {

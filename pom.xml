@@ -23,5 +23,6 @@
 		<module>leopard-command</module>
 		<module>leopard-servlet</module>
 		<module>leopard-json</module>
+		<module>leopard-httpnb</module>
 	</modules>
 </project>

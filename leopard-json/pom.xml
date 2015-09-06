@@ -4,14 +4,14 @@
 	<parent>
 		<groupId>io.leopard</groupId>
 		<artifactId>leopard-lang-parent</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>leopard-json</artifactId>
 
 	<scm>
-		<url>https://github.com/tanhaichao/leopard-json/tags/leopard-lang-parent-0.0.3/leopard-json</url>
-		<connection>scm:svn:https://github.com/tanhaichao/leopard-json/tags/leopard-lang-parent-0.0.3/trunk</connection>
-		<developerConnection>scm:svn:https://github.com/tanhaichao/leopard-json/tags/leopard-lang-parent-0.0.3/trunk</developerConnection>
+		<url>https://github.com/tanhaichao/leopard-json</url>
+		<connection>scm:svn:https://github.com/tanhaichao/leopard-json/trunk</connection>
+		<developerConnection>scm:svn:https://github.com/tanhaichao/leopard-json/trunk</developerConnection>
 	</scm>
 
 

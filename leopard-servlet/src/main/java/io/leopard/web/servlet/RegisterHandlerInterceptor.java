@@ -34,6 +34,10 @@ public abstract class RegisterHandlerInterceptor implements HandlerInterceptor, 
 		try {
 			clazz = Class.forName(beanClassName);
 		}
+		catch (NoClassDefFoundError e) {
+			e.printStackTrace();
+			return false;
+		}
 		catch (ClassNotFoundException e) {
 			return false;
 		}

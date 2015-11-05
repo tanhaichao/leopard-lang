@@ -53,8 +53,8 @@ public abstract class RegisterHandlerInterceptor implements HandlerInterceptor, 
 		for (String beanName : factory.getBeanDefinitionNames()) {
 			BeanDefinition beanDefinition = factory.getBeanDefinition(beanName);
 			boolean isHandlerMapping = isHandlerMapping(beanDefinition);
-			System.out.println("setBeanFactory postProcessBeanFactory BeanClassName:" + beanDefinition.getBeanClassName() + " isHandlerMapping:" + isHandlerMapping);
 			if (isHandlerMapping) {
+				System.out.println("setBeanFactory postProcessBeanFactory BeanClassName:" + beanDefinition.getBeanClassName() + " isHandlerMapping:" + isHandlerMapping);
 				MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
 				propertyValues.addPropertyValue("interceptors", this);
 			}

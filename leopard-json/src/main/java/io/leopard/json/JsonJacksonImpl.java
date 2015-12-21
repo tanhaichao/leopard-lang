@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.codehaus.jackson.map.DeserializationConfig;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
-import org.codehaus.jackson.map.type.TypeFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class JsonJacksonImpl implements IJson {
 	private static ObjectMapper mapper = new ObjectMapper(); // can reuse, share
@@ -15,7 +15,9 @@ public class JsonJacksonImpl implements IJson {
 	private static ObjectWriter writer = new ObjectMapper().writer().withDefaultPrettyPrinter();
 
 	static {
-		mapperIgnoreUnknownField.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		// DeserializationConfig.
+		mapperIgnoreUnknownField.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
+		// mapperIgnoreUnknownField.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	/**
@@ -63,14 +65,15 @@ public class JsonJacksonImpl implements IJson {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
+	// @SuppressWarnings("deprecation")
 	@Override
 	public <T> List<T> toListObject(String json, Class<T> clazz) {
 		if (json == null || json.length() == 0) {
 			return null;
 		}
+		JavaType javaType = mapper.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, clazz);
 		try {
-			return mapper.readValue(json, TypeFactory.collectionType(List.class, clazz));
+			return mapper.readValue(json, javaType);
 		}
 		catch (Exception e) {
 			throw new JsonException(e.getMessage(), e);

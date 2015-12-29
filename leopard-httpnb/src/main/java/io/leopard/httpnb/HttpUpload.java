@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -40,16 +39,20 @@ public class HttpUpload {
 	//
 	// ------WebKitFormBoundaryEvaq8bJriOMUn4F6--
 
-	public static void upload2(HttpURLConnection conn, Entry<String, String> fileEntry, List<Param> paramList) throws IOException {
-		List<Entry<String, String>> fileList = new ArrayList<Entry<String, String>>();
-		fileList.add(fileEntry);
+	// public static void upload2(HttpURLConnection conn, Entry<String, String> fileEntry, List<Param> paramList) throws IOException {
+	// List<Entry<String, String>> fileList = new ArrayList<Entry<String, String>>();
+	// fileList.add(fileEntry);
+	//
+	// Param[] params = new Param[paramList.size()];
+	// paramList.toArray(params);
+	// upload(conn, fileList, params);
+	// }
 
-		Param[] params = new Param[paramList.size()];
-		paramList.toArray(params);
-		upload(conn, fileList, params);
-	}
+	// public static void upload(HttpURLConnection conn, List<Entry<String, String>> fileList, Param... params) throws IOException {
+	// upload(conn, fileList, params);
+	// }
 
-	public static void upload(HttpURLConnection conn, List<Entry<String, String>> fileList, Param... params) throws IOException {
+	public static void upload(HttpURLConnection conn, List<Entry<String, String>> fileList, List<Param> paramList) throws IOException {
 		long time = System.currentTimeMillis();
 		String boundary = "Droid4jFormBoundary" + time;
 		boundary = "WebKitFormBoundary7Ihe6KrrkF27C7DX";
@@ -62,7 +65,7 @@ public class HttpUpload {
 		DataOutputStream ds = new DataOutputStream(output);
 		ds.writeBytes(BR);
 
-		for (Param param : params) {
+		for (Param param : paramList) {
 			if (param.getValue() != null) {
 				uploadParam(ds, boundary, param);
 			}

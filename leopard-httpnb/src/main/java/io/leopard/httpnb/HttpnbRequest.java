@@ -13,7 +13,7 @@ public class HttpnbRequest {
 	private List<Param> paramList = new ArrayList<Param>();
 	List<Entry<String, String>> fileList = new ArrayList<Entry<String, String>>();
 
-	public void setParamater(String name, Object value) {
+	public void addParamater(String name, Object value) {
 		Param param = new Param();
 		param.setName(name);
 		param.setValue(value);
@@ -28,7 +28,7 @@ public class HttpnbRequest {
 		this.cookies = cookies;
 	}
 
-	public void setFile(String name, String path) {
+	public void addFile(String name, String path) {
 		Entry<String, String> fileEntry = new SimpleEntry<String, String>(name, path);
 		fileList.add(fileEntry);
 	}
@@ -38,14 +38,35 @@ public class HttpnbRequest {
 		if (cookies != null) {
 			header.setCookie(cookies);
 		}
+
 		try {
-			HttpURLConnection conn = header.openConnection(url);
-			HttpUpload.upload(conn, fileList, paramList);
-			return Httpnb.execute(conn);
+
+			if (fileList.isEmpty()) {
+				return this.doPost(url, header);
+			}
+			else {
+				return this.doUpload(url, header);
+			}
+
 		}
 		catch (IOException e) {
 			throw new HttpException(e, header);
 		}
+	}
+
+	protected String doPost(String url, HttpHeader header) throws IOException {
+		for (Param param : paramList) {
+			// System.out.println("addParam:" + param);
+			header.addParam(param);
+		}
+		HttpURLConnection conn = header.openConnection(url);
+		return Httpnb.execute(conn);
+	}
+
+	protected String doUpload(String url, HttpHeader header) throws IOException {
+		HttpURLConnection conn = header.openConnection(url);
+		HttpUpload.upload(conn, fileList, paramList);
+		return Httpnb.execute(conn);
 
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -16,8 +16,9 @@ public class JsonJacksonImpl implements IJson {
 
 	static {
 		// DeserializationConfig.
-		mapperIgnoreUnknownField.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
-		// mapperIgnoreUnknownField.configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+		// mapperIgnoreUnknownField.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
+		mapperIgnoreUnknownField.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	/**

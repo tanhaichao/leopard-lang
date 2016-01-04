@@ -27,10 +27,12 @@ public interface IJson {
 	 * 将Json转换成对象.
 	 * 
 	 * @param json
-	 * @param valueType
+	 * @param valueTypes
 	 * @return
 	 */
 	<T> T toObject(String json, Class<T> clazz);
+
+	<T> T toObject(String json, Class<T> clazz, boolean ignoreUnknownField);
 
 	<T> List<T> toListObject(String json, Class<T> clazz);
 

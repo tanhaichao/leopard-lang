@@ -45,6 +45,10 @@ public class Json {
 		return instance.toObject(json, clazz);
 	}
 
+	public static <T> T toObject(String json, Class<T> clazz, boolean ignoreUnknownField) {
+		return instance.toObject(json, clazz, ignoreUnknownField);
+	}
+
 	public static Map<String, Object> toMap(String json) {
 		return instance.toMap(json);
 	}

@@ -28,6 +28,12 @@ public class JsonFastJsonImpl implements IJson {
 	}
 
 	@Override
+	public <T> T toObject(String json, Class<T> clazz, boolean ignoreUnknownField) {
+		// TODO ignoreUnknownField未实现
+		return JSON.parseObject(json, clazz);
+	}
+
+	@Override
 	public <T> List<T> toListObject(String json, Class<T> clazz) {
 		return JSON.parseArray(json, clazz);
 	}

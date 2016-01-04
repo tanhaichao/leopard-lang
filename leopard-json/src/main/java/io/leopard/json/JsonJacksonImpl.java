@@ -165,7 +165,8 @@ public class JsonJacksonImpl implements IJson {
 	 *            是否忽略不存在的字段?
 	 * @return
 	 */
-	public static <T> T toObject(String json, Class<T> clazz, boolean ignoreUnknownField) {
+	@Override
+	public <T> T toObject(String json, Class<T> clazz, boolean ignoreUnknownField) {
 		if (json == null || json.length() == 0) {
 			return null;
 		}

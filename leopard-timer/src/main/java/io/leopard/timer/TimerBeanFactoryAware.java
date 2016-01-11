@@ -2,6 +2,8 @@ package io.leopard.timer;
 
 import java.util.Map;
 
+import javax.annotation.PreDestroy;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
@@ -19,6 +21,7 @@ public class TimerBeanFactoryAware implements BeanFactoryAware {
 		if (isInitialized) {
 			// 为了防止spring重复配置导致定时器启动多次。
 			throw new RuntimeException("定时器已启动.");
+			// new RuntimeException("定时器已启动.").printStackTrace();
 		}
 		isInitialized = true;
 
@@ -28,6 +31,11 @@ public class TimerBeanFactoryAware implements BeanFactoryAware {
 			TimerUtil.start(timer);
 		}
 
+	}
+
+	@PreDestroy
+	public void destroy() {
+		isInitialized = false;
 	}
 
 }

@@ -15,7 +15,6 @@ public class HttpHeaderPostImpl extends AbstractHttpHeader {
 
 	@Override
 	public HttpURLConnection openConnection(String url) throws IOException {
-		// TODO Auto-generated method stub
 		HttpURLConnection conn = super.openConnection(url);
 
 		conn.setUseCaches(false); // do not use cache

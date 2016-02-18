@@ -6,6 +6,8 @@
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>leopard-servlet</artifactId>
+	<name>Leopard-Servlet</name>
+	<description>Servlet常用操作类库。如CookieUtil、RequestUtil等。</description>
 
 	<dependencies>
 		<dependency>

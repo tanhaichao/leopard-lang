@@ -4,7 +4,8 @@
 	<artifactId>leopard-lang-parent</artifactId>
 	<version>0.0.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
+	<name>Leopard-Lang</name>
+	<description>命令行程序、Http操作、Json、Servlet、定时器等类库</description>
 
 	<parent>
 		<groupId>io.leopard.depend</groupId>

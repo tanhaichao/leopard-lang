@@ -6,4 +6,6 @@
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>leopard-httpnb</artifactId>
+	<name>HttpNB</name>
+	<description>Http操作类库。支持Get、Post、文件上传等常用操作。</description>
 </project>

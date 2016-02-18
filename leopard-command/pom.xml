@@ -6,6 +6,8 @@
 		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>leopard-command</artifactId>
+	<name>Leopard-Command</name>
+	<description>命令行程序支持类库。为在线管理命令行程序提供接口支持。</description>
 
 	<dependencies>
 		<dependency>

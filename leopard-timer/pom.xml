@@ -7,7 +7,7 @@
 	</parent>
 	<artifactId>leopard-timer</artifactId>
 	<name>Leopard-Timer</name>
-	<description>规范、简化定时器定义，使定时器测试更加方便、并可在TopNB查看定时器线程。</description>
+	<description>规范、简化定时器定义，使定时器测试更加方便。为在线管理定时器提供接口支持。</description>
 
 
 	<dependencies>

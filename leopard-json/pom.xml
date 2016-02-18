@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>leopard-json</artifactId>
 	<name>Leopard-Json</name>
-	<description>规范、简化Json操作，可选Jackson、FastJson实现。</description>
+	<description>规范、简化Json操作，可选Jackson、FastJson实现。并可在TopNB查看耗时统计信息。</description>
 
 	<dependencies>
 		<!-- <dependency> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-jaxrs</artifactId> <scope>provided</scope> </dependency> -->

@@ -1,5 +1,7 @@
 package io.leopard.lang.util;
 
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
@@ -78,4 +80,12 @@ public class FieldUtilTest {
 		}
 	}
 
+	@Test
+	public void test() {
+		
+		// Writer dd;
+		// PrintWriter ddd;
+		// Exception e = new Exception("err");
+		// e.printStackTrace(s);
+	}
 }

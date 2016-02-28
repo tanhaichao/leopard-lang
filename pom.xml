@@ -25,5 +25,6 @@
 		<module>leopard-servlet</module>
 		<module>leopard-json</module>
 		<module>leopard-httpnb</module>
+		<module>leopard-util</module>
 	</modules>
 </project>

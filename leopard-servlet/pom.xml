@@ -26,8 +26,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
-
 		<!-- test -->
 		<dependency>
 			<groupId>io.leopard</groupId>
@@ -42,8 +40,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-jaxrs</artifactId>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

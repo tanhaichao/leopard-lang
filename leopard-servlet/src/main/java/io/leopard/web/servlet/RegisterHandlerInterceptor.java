@@ -30,6 +30,10 @@ public abstract class RegisterHandlerInterceptor implements HandlerInterceptor, 
 
 	protected boolean isHandlerMapping(BeanDefinition beanDefinition) {
 		String beanClassName = beanDefinition.getBeanClassName();
+		if (beanClassName == null) {
+			// throw new NullPointerException("beanDefinition:" + beanDefinition);
+			return false;
+		}
 		Class<?> clazz;
 		try {
 			clazz = Class.forName(beanClassName);
@@ -54,7 +58,7 @@ public abstract class RegisterHandlerInterceptor implements HandlerInterceptor, 
 			BeanDefinition beanDefinition = factory.getBeanDefinition(beanName);
 			boolean isHandlerMapping = isHandlerMapping(beanDefinition);
 			if (isHandlerMapping) {
-				
+
 				System.out.println("setBeanFactory postProcessBeanFactory BeanClassName:" + beanDefinition.getBeanClassName() + " class:" + this.getClass().getName());
 				MutablePropertyValues propertyValues = beanDefinition.getPropertyValues();
 				propertyValues.addPropertyValue("interceptors", this);

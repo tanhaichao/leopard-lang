@@ -40,11 +40,6 @@
 			<artifactId>jackson-databind</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>io.leopard</groupId>
-			<artifactId>leopard-jetty</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<!-- test -->
 	</dependencies>
 </project>

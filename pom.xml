@@ -23,12 +23,7 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- test -->
-			<dependency>
-				<groupId>io.leopard</groupId>
-				<artifactId>leopard-jetty</artifactId>
-				<version>0.9-SNAPSHOT</version>
-				<scope>test</scope>
-			</dependency>
+
 			<!-- test -->
 		</dependencies>
 	</dependencyManagement>

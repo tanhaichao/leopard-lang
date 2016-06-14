@@ -6,9 +6,9 @@
 		<version>0.9-SNAPSHOT</version>
 	</parent>
 	<artifactId>leopard-timer</artifactId>
-	<version>0.9-SNAPSHOT</version>
 	<name>Leopard-Timer</name>
 	<description>规范、简化定时器定义，使定时器测试更加方便。为在线管理定时器提供接口支持。</description>
+
 
 	<dependencies>
 		<dependency>

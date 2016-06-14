@@ -31,14 +31,12 @@
 		<dependency>
 			<groupId>io.leopard</groupId>
 			<artifactId>leopard-xparam</artifactId>
-			<version>0.0.3-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>io.leopard</groupId>
 			<artifactId>leopard-httpnb</artifactId>
-			<version>0.0.3</version>
+			<version>0.0.4-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -49,7 +47,6 @@
 		<dependency>
 			<groupId>io.leopard</groupId>
 			<artifactId>leopard-jetty</artifactId>
-			<version>0.0.4</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- test -->

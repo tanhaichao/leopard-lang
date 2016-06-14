@@ -19,6 +19,25 @@
 		<developerConnection>scm:svn:https://github.com/tanhaichao/leopard-lang/trunk</developerConnection>
 	</scm>
 
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- test -->
+			<dependency>
+				<groupId>io.leopard</groupId>
+				<artifactId>leopard-xparam</artifactId>
+				<version>0.0.3-SNAPSHOT</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.leopard</groupId>
+				<artifactId>leopard-jetty</artifactId>
+				<version>0.0.4</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- test -->
+		</dependencies>
+	</dependencyManagement>
 	<modules>
 		<module>leopard-timer</module>
 		<module>leopard-command</module>

@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.leopard</groupId>
 	<artifactId>leopard-lang-parent</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.8</version>
 	<packaging>pom</packaging>
 	<name>Leopard-Lang</name>
 	<description>命令行程序、Http操作、Json、Servlet、定时器等类库</description>
@@ -14,9 +14,9 @@
 	</parent>
 
 	<scm>
-		<url>https://github.com/tanhaichao/leopard-lang</url>
-		<connection>scm:svn:https://github.com/tanhaichao/leopard-lang/trunk</connection>
-		<developerConnection>scm:svn:https://github.com/tanhaichao/leopard-lang/trunk</developerConnection>
+		<url>https://github.com/tanhaichao/leopard-lang/tags/0.8</url>
+		<connection>scm:svn:https://github.com/tanhaichao/leopard-lang/tags/0.8</connection>
+		<developerConnection>scm:svn:https://github.com/tanhaichao/leopard-lang/tags/0.8</developerConnection>
 	</scm>
 
 

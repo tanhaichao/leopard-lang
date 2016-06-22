@@ -16,33 +16,35 @@ public class CookieUtil {
 	/**
 	 * 设置cookie</br>
 	 * 
-	 * @param name
-	 *            cookie名称
-	 * @param value
-	 *            cookie值
-	 * @param request
-	 *            http请求
-	 * @param response
-	 *            http响应
+	 * @param name cookie名称
+	 * @param value cookie值
+	 * @param request http请求
+	 * @param response http响应
 	 */
 	public static void setCookie(String name, String value, HttpServletRequest request, HttpServletResponse response) {
 		int maxAge = -1;
 		CookieUtil.setCookie(name, value, maxAge, request, response);
 	}
 
+	public static void setCookie(String name, String value, HttpServletResponse response) {
+		if (name == null || name.length() == 0) {
+			throw new IllegalArgumentException("cookie名称不能为空.");
+		}
+		if (value == null || value.length() == 0) {
+			throw new IllegalArgumentException("cookie值不能为空.");
+		}
+		Cookie cookie = new Cookie(name, value);
+		response.addCookie(cookie);
+	}
+
 	/**
 	 * 设置cookie</br>
 	 * 
-	 * @param name
-	 *            cookie名称
-	 * @param value
-	 *            cookie值
-	 * @param maxAge
-	 *            最大生存时间
-	 * @param request
-	 *            http请求
-	 * @param response
-	 *            http响应
+	 * @param name cookie名称
+	 * @param value cookie值
+	 * @param maxAge 最大生存时间
+	 * @param request http请求
+	 * @param response http响应
 	 */
 	public static void setCookie(String name, String value, int maxAge, HttpServletRequest request, HttpServletResponse response) {
 		boolean httpOnly = false;
@@ -52,18 +54,12 @@ public class CookieUtil {
 	/**
 	 * 设置cookie</br>
 	 * 
-	 * @param name
-	 *            cookie名称
-	 * @param value
-	 *            cookie值
-	 * @param maxAge
-	 *            最大生存时间
-	 * @param httpOnly
-	 *            cookie的路径
-	 * @param request
-	 *            http请求
-	 * @param response
-	 *            http响应
+	 * @param name cookie名称
+	 * @param value cookie值
+	 * @param maxAge 最大生存时间
+	 * @param httpOnly cookie的路径
+	 * @param request http请求
+	 * @param response http响应
 	 */
 	public static void setCookie(String name, String value, int maxAge, boolean httpOnly, HttpServletRequest request, HttpServletResponse response) {
 		String domain = request.getServerName();
@@ -98,10 +94,8 @@ public class CookieUtil {
 	/**
 	 * 获取cookie的值</br>
 	 * 
-	 * @param name
-	 *            cookie名称
-	 * @param request
-	 *            http请求
+	 * @param name cookie名称
+	 * @param request http请求
 	 * @return cookie值
 	 */
 	public static String getCookie(String name, HttpServletRequest request) {
@@ -123,12 +117,9 @@ public class CookieUtil {
 	/**
 	 * 删除cookie</br>
 	 * 
-	 * @param name
-	 *            cookie名称
-	 * @param request
-	 *            http请求
-	 * @param response
-	 *            http响应
+	 * @param name cookie名称
+	 * @param request http请求
+	 * @param response http响应
 	 */
 	public static void deleteCookie(String name, HttpServletRequest request, HttpServletResponse response) {
 		if (name == null || name.length() == 0) {
@@ -140,12 +131,9 @@ public class CookieUtil {
 	/**
 	 * 删除cookie</br>
 	 * 
-	 * @param name
-	 *            cookie名称
-	 * @param request
-	 *            http请求
-	 * @param response
-	 *            http响应
+	 * @param name cookie名称
+	 * @param request http请求
+	 * @param response http响应
 	 */
 	public static void deleteCookie(String name, String domain, HttpServletResponse response) {
 		if (name == null || name.length() == 0) {

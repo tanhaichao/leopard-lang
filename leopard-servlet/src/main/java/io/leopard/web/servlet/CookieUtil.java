@@ -26,6 +26,7 @@ public class CookieUtil {
 		CookieUtil.setCookie(name, value, maxAge, request, response);
 	}
 
+	
 	public static void setCookie(String name, String value, HttpServletResponse response) {
 		if (name == null || name.length() == 0) {
 			throw new IllegalArgumentException("cookie名称不能为空.");

@@ -3,8 +3,6 @@ package io.leopard.web.servlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.util.StringUtils;
-
 public class CookieBuilder {
 
 	private String name;

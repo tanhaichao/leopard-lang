@@ -63,7 +63,7 @@ public class CookieBuilder {
 		if (maxAge > -1) {
 			cookie.setMaxAge(maxAge);
 		}
-		if (StringUtils.isEmpty(domain)) {
+		if (domain != null && domain.length() > 0) {
 			cookie.setDomain(domain);
 		}
 		if (httpOnly) {

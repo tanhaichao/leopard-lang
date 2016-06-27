@@ -25,6 +25,7 @@ public class CookieBuilder {
 
 	public CookieBuilder(String name, String value, HttpServletResponse response) {
 		this.name = name;
+		this.value = value;
 		this.response = response;
 	}
 
@@ -55,7 +56,7 @@ public class CookieBuilder {
 			throw new IllegalArgumentException("cookie名称不能为空.");
 		}
 		if (value == null || value.length() == 0) {
-			throw new IllegalArgumentException("cookie值不能为空.");
+			throw new IllegalArgumentException("cookie[" + name + "]值不能为空.");
 		}
 		Cookie cookie = new Cookie(name, value);
 

@@ -34,6 +34,7 @@
 		<module>leopard-json</module>
 		<module>leopard-httpnb</module>
 		<module>leopard-exception</module>
+		<module>leopard-util</module>
 	</modules>
 
 </project>

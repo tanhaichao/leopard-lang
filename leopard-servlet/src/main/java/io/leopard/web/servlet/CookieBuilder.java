@@ -64,10 +64,11 @@ public class CookieBuilder {
 		if (domain != null && domain.length() > 0) {
 			cookie.setDomain(domain);
 		}
+		cookie.setPath("/");
 		if (httpOnly) {
-			cookie.setPath("/");
 			cookie.setHttpOnly(true);
 		}
+		// response.addHeader("P3P", "CP=\"CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR\"");
 
 		response.addCookie(cookie);
 		return this;

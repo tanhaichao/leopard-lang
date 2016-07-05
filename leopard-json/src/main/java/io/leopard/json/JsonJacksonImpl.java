@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +17,13 @@ public class JsonJacksonImpl implements IJson {
 
 	static {
 		// DeserializationConfig.
+		// writer.wi
+		// mapper.setAnnotationIntrospector(ai)
 
+		// 自定义 Jackson 注解与禁用某一特定的注解
+		// http: // gloveangels.com/customize-jackson-annotation-and-disable-specific-annotation/
+		// mapper
+		// JsonIgnore dd;
 		// mapperIgnoreUnknownField.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
 		mapperIgnoreUnknownField.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}

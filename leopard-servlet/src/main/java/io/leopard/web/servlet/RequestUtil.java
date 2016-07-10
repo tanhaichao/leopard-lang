@@ -86,7 +86,7 @@ public class RequestUtil {
 	 * @param request
 	 * @return
 	 */
-	public static String getSchemeAndServerName(HttpServletRequest request) {
+	public static String getProtocolAndServerName(HttpServletRequest request) {
 		int port = request.getServerPort();
 		String protocol = request.getProtocol();
 		String serverName = request.getServerName();

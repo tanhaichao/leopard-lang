@@ -80,6 +80,23 @@ public class RequestUtil {
 	// // return null;
 	// // }
 	// }
+	/**
+	 * 获取域名.
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getDomain2(HttpServletRequest request) {
+		int port = request.getServerPort();
+		String protocol = request.getProtocol();
+		String serverName = request.getServerName();
+		StringBuilder sb = new StringBuilder();
+		sb.append(protocol).append(":").append(serverName);
+		if (port != 80) {
+			sb.append(port);
+		}
+		return sb.toString();
+	}
 
 	/**
 	 * 获取域名.

@@ -31,8 +31,9 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 			// throw new UnsupportedOperationException("未知类型[" + fieldName + "].");
 			return null;
 		}
+		T bean;
 		try {
-			T bean = clazz.newInstance();
+			bean = clazz.newInstance();
 			deserialize(node, clazz, bean);
 
 			Class<?> clazz2 = clazz.getSuperclass();
@@ -40,8 +41,8 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 				if (clazz2 == null || clazz2.equals(Object.class)) {
 					break;
 				}
-				deserialize(node, clazz, bean);
-				clazz2 = clazz.getSuperclass();
+				deserialize(node, clazz2, bean);
+				clazz2 = clazz2.getSuperclass();
 			}
 
 		}
@@ -52,7 +53,7 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 			throw new IOException(e.getMessage(), e);
 		}
 
-		return null;
+		return bean;
 	}
 
 	protected void deserialize(JsonNode node, Class<?> clazz, T bean) throws IllegalArgumentException, IllegalAccessException {

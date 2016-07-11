@@ -20,8 +20,7 @@ public class Httpnb {
 	/**
 	 * 打开Http Header安全限制</br>
 	 * 
-	 * @param allowRestrictedHeaders
-	 *            true
+	 * @param allowRestrictedHeaders true
 	 */
 	public static void setAllowRestrictedHeaders(boolean allowRestrictedHeaders) {
 		System.setProperty("sun.net.http.allowRestrictedHeaders", allowRestrictedHeaders + "");
@@ -85,7 +84,7 @@ public class Httpnb {
 	}
 
 	public static String doPost(String url, long timeout, Map<String, Object> map) {
-		HttpHeader header = new HttpHeaderGetImpl(timeout);
+		HttpHeader header = new HttpHeaderPostImpl(timeout);
 		Iterator<Entry<String, Object>> iterator = map.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<String, Object> entry = iterator.next();

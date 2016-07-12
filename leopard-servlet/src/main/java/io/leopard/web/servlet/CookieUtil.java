@@ -30,9 +30,9 @@ public class CookieUtil {
 		if (name == null || name.length() == 0) {
 			throw new IllegalArgumentException("cookie名称不能为空.");
 		}
-		if (value == null || value.length() == 0) {
-			throw new IllegalArgumentException("cookie值不能为空.");
-		}
+		// if (value == null || value.length() == 0) {
+		// throw new IllegalArgumentException("cookie值不能为空.");
+		// }
 		Cookie cookie = new Cookie(name, value);
 		response.addCookie(cookie);
 	}
@@ -71,9 +71,9 @@ public class CookieUtil {
 		if (name == null || name.length() == 0) {
 			throw new IllegalArgumentException("cookie名称不能为空.");
 		}
-		if (value == null || value.length() == 0) {
-			throw new IllegalArgumentException("cookie值不能为空.");
-		}
+		// if (value == null || value.length() == 0) {
+		// throw new IllegalArgumentException("cookie值不能为空.");
+		// }
 
 		Cookie cookie = new Cookie(name, value);
 		cookie.setDomain(domain);

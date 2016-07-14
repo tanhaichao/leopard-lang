@@ -53,9 +53,9 @@ public class CookieBuilder {
 		if (name == null || name.length() == 0) {
 			throw new IllegalArgumentException("cookie名称不能为空.");
 		}
-		if (value == null || value.length() == 0) {
-			throw new IllegalArgumentException("cookie[" + name + "]值不能为空.");
-		}
+		// if (value == null || value.length() == 0) {
+		// throw new IllegalArgumentException("cookie[" + name + "]值不能为空.");
+		// }
 		Cookie cookie = new Cookie(name, value);
 
 		if (maxAge > -1) {

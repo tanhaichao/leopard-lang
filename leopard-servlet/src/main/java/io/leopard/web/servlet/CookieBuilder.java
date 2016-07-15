@@ -1,6 +1,10 @@
 package io.leopard.web.servlet;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CookieBuilder {
@@ -42,6 +46,24 @@ public class CookieBuilder {
 	public CookieBuilder setDomain(String domain) {
 		this.domain = domain;
 		return this;
+	}
+
+	public CookieBuilder setTopLevelDomain(HttpServletRequest request) {
+		String serverName = request.getServerName();
+		String domain = parseTopLevelDomain(serverName);
+		this.domain = domain;
+		return this;
+	}
+
+	protected static String parseTopLevelDomain(String serverName) {
+		String regex = "[a-z0-9]+\\.[a-z]+$";
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(serverName);
+		if (m.find()) {
+			return m.group();
+		}
+		// 来到这的，有localhost
+		return serverName;
 	}
 
 	public CookieBuilder setHttpOnly(boolean httpOnly) {

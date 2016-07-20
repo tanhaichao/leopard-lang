@@ -86,12 +86,12 @@ public class RequestUtil {
 	 * @param request
 	 * @return
 	 */
-	public static String getProtocolAndServerName(HttpServletRequest request) {
+	public static String getSchemeAndServerName(HttpServletRequest request) {
 		int port = request.getServerPort();
-		String protocol = request.getProtocol();
+		String scheme = request.getScheme();
 		String serverName = request.getServerName();
 		StringBuilder sb = new StringBuilder();
-		sb.append(protocol).append(":").append(serverName);
+		sb.append(scheme).append(":").append(serverName);
 		if (port != 80) {
 			sb.append(port);
 		}

@@ -6,11 +6,10 @@ import java.net.HttpURLConnection;
 import java.net.URLEncoder;
 import java.util.List;
 
-public class HttpHeaderGetImpl extends AbstractHttpHeader {
+public class HttpHeaderDeleteImpl extends AbstractHttpHeader {
 
-	
-	public HttpHeaderGetImpl(long timeout) {
-		this.setMethod("GET");
+	public HttpHeaderDeleteImpl(long timeout) {
+		this.setMethod("DELETE");
 		this.setTimeout(timeout);
 	}
 
@@ -21,7 +20,7 @@ public class HttpHeaderGetImpl extends AbstractHttpHeader {
 		}
 		// System.err.println("url:" + url);
 		HttpURLConnection conn = super.openConnection(url);
-		conn.setRequestMethod("GET");
+		conn.setRequestMethod("DELETE");
 		return conn;
 	}
 

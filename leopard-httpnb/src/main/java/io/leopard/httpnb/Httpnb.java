@@ -26,6 +26,21 @@ public class Httpnb {
 		System.setProperty("sun.net.http.allowRestrictedHeaders", allowRestrictedHeaders + "");
 	}
 
+	public static String doDelete(String url) {
+		return doDelete(url, -1);
+	}
+
+	public static String doDelete(String url, long timeout) {
+		HttpHeader header = new HttpHeaderDeleteImpl(timeout);
+		try {
+			HttpURLConnection conn = header.openConnection(url);
+			return execute(conn);
+		}
+		catch (IOException e) {
+			throw new HttpException(e, header);
+		}
+	}
+
 	public static String doGet(String url) {
 		return doGet(url, -1);
 	}

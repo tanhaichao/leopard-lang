@@ -9,8 +9,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.DoubleNode;
-import com.fasterxml.jackson.databind.node.FloatNode;
 
 /**
  * 子类Json序列号
@@ -93,7 +91,12 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 				}
 			}
 			else {
-				throw new IllegalArgumentException("未知数据类型[" + type.getName() + "].");
+				String textValue = node2.textValue();
+				System.err.println("textValue:" + textValue);
+				IllegalArgumentException e = new IllegalArgumentException("未知数据类型[" + type.getName() + " fieldName:" + fieldName + "].");
+				e.printStackTrace();
+				// throw e;
+				value = null;
 			}
 			field.set(bean, value);
 		}

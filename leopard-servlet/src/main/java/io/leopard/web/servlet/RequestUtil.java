@@ -8,6 +8,9 @@ import java.util.regex.Matcher;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 /**
  * 
  * 
@@ -49,13 +52,14 @@ public class RequestUtil {
 		return requestURI;
 	}
 
-	// public static HttpServletRequest getCurrentRequest() {
-	// ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-	// if (attr == null) {
-	// return null;
-	// }
-	// return attr.getRequest();
-	// }
+	public static HttpServletRequest getCurrentRequest() {
+		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		if (attr == null) {
+			return null;
+		}
+		return attr.getRequest();
+	}
+
 	//
 	// /**
 	// * 获取上传的文件.

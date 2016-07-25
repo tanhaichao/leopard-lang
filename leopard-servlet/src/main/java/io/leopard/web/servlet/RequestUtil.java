@@ -95,7 +95,7 @@ public class RequestUtil {
 		String scheme = request.getScheme();
 		String serverName = request.getServerName();
 		StringBuilder sb = new StringBuilder();
-		sb.append(scheme).append(":").append(serverName);
+		sb.append(scheme).append("//:").append(serverName);
 		if (port != 80) {
 			sb.append(port);
 		}

@@ -2,7 +2,11 @@ package io.leopard.json;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -69,6 +73,15 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 			else if (type.equals(boolean.class)) {
 				value = node2.booleanValue();
 			}
+			else if (type.equals(Boolean.class)) {
+				String text = node2.textValue();
+				if (text == null) {
+					value = null;
+				}
+				else {
+					value = node2.booleanValue();
+				}
+			}
 			else if (type.equals(int.class)) {
 				value = node2.intValue();
 			}
@@ -90,9 +103,11 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 					value = new Date(time);
 				}
 			}
+			else if (List.class.equals(type)) {
+				value = this.parseList(field, node2);
+			}
 			else {
-				String textValue = node2.textValue();
-				System.err.println("textValue:" + textValue);
+				// System.err.println("textValue:" + textValue + " node2:" + node2.asText());
 				IllegalArgumentException e = new IllegalArgumentException("未知数据类型[" + type.getName() + " fieldName:" + fieldName + "].");
 				e.printStackTrace();
 				// throw e;
@@ -100,6 +115,31 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 			}
 			field.set(bean, value);
 		}
+	}
+
+	protected Object parseList(Field field, JsonNode node) {
+		ParameterizedType p = (ParameterizedType) field.getGenericType();
+		Class<?> clazz = (Class<?>) p.getActualTypeArguments()[0];
+		if (String.class.equals(clazz)) {
+			return this.parseListString(node);
+		}
+		else {
+			throw new IllegalArgumentException("未知泛型[" + clazz.getName() + "].");
+		}
+	}
+
+	protected Object parseListString(JsonNode node) {
+		Iterator<JsonNode> elements = node.elements();
+		List<String> list = null;
+		if (elements != null) {
+			list = new ArrayList<String>();
+			while (elements.hasNext()) {
+				JsonNode node3 = elements.next();
+				String text = node3.asText();
+				list.add(text);
+			}
+		}
+		return list;
 	}
 
 	protected abstract String getTypeFieldName();

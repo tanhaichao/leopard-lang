@@ -64,8 +64,12 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 			Class<?> type = field.getType();
 			String fieldName = field.getName();
 			JsonNode node2 = node.get(fieldName);
-
 			Object value;
+
+			if (node2 == null) {
+				value = null;
+				continue;
+			}
 
 			if (type.equals(String.class)) {
 				value = node2.textValue();
@@ -95,12 +99,18 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 				value = node2.doubleValue();
 			}
 			else if (type.equals(Date.class)) {
-				long time = node2.longValue();// TODO 日期类型还不够严谨
-				if (time <= 0) {
+				String text = node2.textValue();
+				if (text == null) {
 					value = null;
 				}
 				else {
-					value = new Date(time);
+					long time = Long.parseLong(text);
+					if (time <= 0) {
+						value = null;
+					}
+					else {
+						value = new Date(time);
+					}
 				}
 			}
 			else if (List.class.equals(type)) {

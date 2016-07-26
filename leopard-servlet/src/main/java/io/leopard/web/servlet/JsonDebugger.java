@@ -6,7 +6,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Json调试工具
+ * Json调试工具.
  * 
  * @author 谭海潮
  *

@@ -21,17 +21,15 @@ public class DisablingJsonSerializerIntrospector extends JacksonAnnotationIntros
 
 	@Override
 	public Object findSerializer(Annotated am) {
-
-		Object serializer = super.findSerializer(am);
-		if (serializer != null) {
-			Class<?> clazz = (Class<?>) serializer;
-			// System.out.println("serializer:" + serializer);
-			// System.out.println("clazz:" + clazz.getName());
-			String className = clazz.getName();
-			if (className.endsWith("ProvinceJsonSerializer")) {
-				return null;
-			}
-		}
-		return serializer;
+		return null;
+		// Object serializer = super.findSerializer(am);
+		// if (serializer != null) {
+		// Class<?> clazz = (Class<?>) serializer;
+		// String className = clazz.getName();
+		// if (className.endsWith("ProvinceJsonSerializer")) {
+		// return null;
+		// }
+		// }
+		// return serializer;
 	}
 }

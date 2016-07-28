@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 public class JsonJacksonImpl implements IJson {
 	private static ObjectMapper mapper = new ObjectMapper(); // can reuse, share
 	private static ObjectMapper mapperIgnoreUnknownField = new ObjectMapper(); // 忽略不存在的字段.
-	private static ObjectWriter writer = new ObjectMapper().writer().withDefaultPrettyPrinter();
+	private static ObjectWriter writer;
 
 	static {
 		// DeserializationConfig.
@@ -25,14 +24,18 @@ public class JsonJacksonImpl implements IJson {
 		// mapper
 		// JsonIgnore dd;
 		// mapperIgnoreUnknownField.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
+		mapper.setAnnotationIntrospector(new DisablingJsonSerializerIntrospector());
+
+
+		writer = mapper.writer().withDefaultPrettyPrinter();
+
 		mapperIgnoreUnknownField.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 
 	/**
 	 * 将对象转成json.
 	 * 
-	 * @param obj
-	 *            对象
+	 * @param obj 对象
 	 * @return
 	 */
 	@Override
@@ -52,8 +55,7 @@ public class JsonJacksonImpl implements IJson {
 	/**
 	 * 将对象转成json.
 	 * 
-	 * @param obj
-	 *            对象
+	 * @param obj 对象
 	 * @return
 	 */
 	@Override
@@ -168,8 +170,7 @@ public class JsonJacksonImpl implements IJson {
 	 * 
 	 * @param json
 	 * @param clazz
-	 * @param ignoreUnknownField
-	 *            是否忽略不存在的字段?
+	 * @param ignoreUnknownField 是否忽略不存在的字段?
 	 * @return
 	 */
 	@Override

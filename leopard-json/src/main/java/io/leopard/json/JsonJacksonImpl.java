@@ -25,10 +25,7 @@ public class JsonJacksonImpl implements IJson {
 		// JsonIgnore dd;
 		// mapperIgnoreUnknownField.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
 		mapper.setAnnotationIntrospector(new DisablingJsonSerializerIntrospector());
-
-
 		writer = mapper.writer().withDefaultPrettyPrinter();
-
 		mapperIgnoreUnknownField.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	}
 

@@ -97,20 +97,20 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 				value = node2.doubleValue();
 			}
 			else if (type.equals(Date.class)) {
-				String text = node2.asText();
-				// System.err.println("node2:" + node2 + " fieldName:" + fieldName + " text:" + text + " value:" + node2.longValue());
-				if (text == null) {
+
+				// String text = node2.asText();
+				// if (text == null) {
+				// value = null;
+				// }
+				// else {
+				long time = node2.longValue();
+				if (time == 0) {
 					value = null;
 				}
 				else {
-					long time = Long.parseLong(text);
-					if (time <= 0) {
-						value = null;
-					}
-					else {
-						value = new Date(time);
-					}
+					value = new Date(time);
 				}
+				// }
 			}
 			else if (List.class.equals(type)) {
 				value = this.parseList(field, node2);

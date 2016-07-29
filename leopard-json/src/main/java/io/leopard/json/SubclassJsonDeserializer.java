@@ -65,12 +65,10 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 			String fieldName = field.getName();
 			JsonNode node2 = node.get(fieldName);
 			Object value;
-
 			if (node2 == null) {
 				value = null;
 				continue;
 			}
-
 			if (type.equals(String.class)) {
 				value = node2.textValue();
 			}
@@ -78,7 +76,7 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 				value = node2.booleanValue();
 			}
 			else if (type.equals(Boolean.class)) {
-				String text = node2.textValue();
+				String text = node2.asText();
 				if (text == null) {
 					value = null;
 				}
@@ -99,7 +97,8 @@ public abstract class SubclassJsonDeserializer<T> extends JsonDeserializer<T> {
 				value = node2.doubleValue();
 			}
 			else if (type.equals(Date.class)) {
-				String text = node2.textValue();
+				String text = node2.asText();
+				// System.err.println("node2:" + node2 + " fieldName:" + fieldName + " text:" + text + " value:" + node2.longValue());
 				if (text == null) {
 					value = null;
 				}

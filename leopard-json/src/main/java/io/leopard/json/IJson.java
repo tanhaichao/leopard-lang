@@ -34,6 +34,8 @@ public interface IJson {
 
 	<T> List<T> toListObject(String json, Class<T> clazz);
 
+	<T> List<T> toListObject(String json, Class<T> clazz, boolean ignoreUnknownField);
+
 	<T> List<T> toListObject(List<String> jsonList, Class<T> clazz);
 
 	<T> List<T> toListObject(List<String> jsonList, Class<T> clazz, boolean ignoreUnknownField);

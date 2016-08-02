@@ -85,9 +85,24 @@ public class JsonJacksonImpl implements IJson {
 		catch (Exception e) {
 			throw new JsonException(e.getMessage(), e);
 		}
-
 	}
 
+	@Override
+	public <T> List<T> toListObject(String json, Class<T> clazz, boolean ignoreUnknownField) {
+		if (!ignoreUnknownField) {
+			return this.toListObject(json, clazz);
+		}
+		if (json == null || json.length() == 0) {
+			return null;
+		}
+		JavaType javaType = mapperIgnoreUnknownField.getTypeFactory().constructParametrizedType(ArrayList.class, List.class, clazz);
+		try {
+			return mapperIgnoreUnknownField.readValue(json, javaType);
+		}
+		catch (Exception e) {
+			throw new JsonException(e.getMessage(), e);
+		}
+	}
 	// public static <T> List<T> toObject(List<String> jsonList, Class<T> valueType) {
 	// return toObject(jsonList, valueType, false);
 	// }

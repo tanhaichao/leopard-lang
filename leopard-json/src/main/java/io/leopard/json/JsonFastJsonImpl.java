@@ -39,6 +39,11 @@ public class JsonFastJsonImpl implements IJson {
 	}
 
 	@Override
+	public <T> List<T> toListObject(String json, Class<T> clazz, boolean ignoreUnknownField) {
+		return JSON.parseArray(json, clazz);
+	}
+
+	@Override
 	public <T> List<T> toListObject(List<String> jsonList, Class<T> clazz) {
 		if (jsonList == null || jsonList.isEmpty()) {
 			return null;

@@ -201,6 +201,18 @@ public class JsonJacksonImpl implements IJson {
 		return list;
 	}
 
+	@Override
+	public <T> List<T> toListObject(List<String> jsonList, Class<T> clazz, boolean ignoreUnknownField) {
+		if (jsonList == null || jsonList.isEmpty()) {
+			return null;
+		}
+		List<T> list = new ArrayList<T>();
+		for (String json : jsonList) {
+			list.add(this.toObject(json, clazz, ignoreUnknownField));
+		}
+		return list;
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> toMap(String json) {

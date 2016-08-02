@@ -61,6 +61,10 @@ public class Json {
 		return instance.toListObject(jsonList, clazz);
 	}
 
+	public static <T> List<T> toListObject(List<String> jsonList, Class<T> clazz, boolean ignoreUnknownField) {
+		return instance.toListObject(jsonList, clazz, ignoreUnknownField);
+	}
+
 	public static void print(Object obj) {
 		String json = toJson(obj);
 		System.out.println("json:" + json);

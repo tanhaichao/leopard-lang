@@ -11,7 +11,6 @@ public class UrlExpiredException extends Exception {
 	private static final long serialVersionUID = 1L;
 
 	public UrlExpiredException(String message) {
-		super("链接已失效");
-		System.err.println("UrlExpiredException:" + message);
+		super("链接已失效[" + message + "]");
 	}
 }

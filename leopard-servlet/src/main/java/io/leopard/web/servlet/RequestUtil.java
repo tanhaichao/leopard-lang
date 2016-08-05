@@ -91,12 +91,43 @@ public class RequestUtil {
 	 * @return
 	 */
 	public static String getSchemeAndServerName(HttpServletRequest request) {
+		// int port = request.getServerPort();
+		// String scheme = request.getScheme();
+		//
+		// String serverName = request.getServerName();
+		// StringBuilder sb = new StringBuilder();
+		// sb.append(scheme).append("://").append(serverName);
+		// if (port != 80) {
+		// sb.append(port);
+		// }
+		// return sb.toString();
+
+		boolean isHttps = "true".equals(request.getHeader("isHttps"));
+		StringBuilder sb = new StringBuilder(48);
 		int port = request.getServerPort();
-		String scheme = request.getScheme();
-		String serverName = request.getServerName();
-		StringBuilder sb = new StringBuilder();
-		sb.append(scheme).append("://").append(serverName);
-		if (port != 80) {
+
+		String scheme;
+		if (isHttps) {
+			scheme = "https";
+			if (port == 80) {
+				port = 443;
+			}
+		}
+		else {
+			scheme = "http";
+		}
+
+		sb.append(scheme);
+		sb.append("://");
+		sb.append(request.getServerName());
+		if (port == 80 && "http".equals(scheme)) {
+			//
+		}
+		else if (port == 443 && "https".equals(scheme)) {
+			//
+		}
+		else {
+			sb.append(':');
 			sb.append(port);
 		}
 		return sb.toString();

@@ -178,7 +178,14 @@ public class Httpnb {
 
 	public static String execute(HttpURLConnection conn, String charsetName) throws IOException {
 		StringBuilder sb = new StringBuilder();
-		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), charsetName));
+		InputStreamReader reader;
+		if (charsetName == null) {
+			reader = new InputStreamReader(conn.getInputStream());
+		}
+		else {
+			reader = new InputStreamReader(conn.getInputStream(), charsetName);
+		}
+		BufferedReader in = new BufferedReader(reader);
 		String str;
 		while ((str = in.readLine()) != null) {
 			if (sb.length() > 0) {

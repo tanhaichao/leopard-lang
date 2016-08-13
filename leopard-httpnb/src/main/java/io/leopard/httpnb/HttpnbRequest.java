@@ -60,13 +60,13 @@ public class HttpnbRequest {
 			header.addParam(param);
 		}
 		HttpURLConnection conn = header.openConnection(url);
-		return Httpnb.execute(conn);
+		return Httpnb.execute(conn, null);
 	}
 
 	protected String doUpload(String url, HttpHeader header) throws IOException {
 		HttpURLConnection conn = header.openConnection(url);
 		HttpUpload.upload(conn, fileList, paramList);
-		return Httpnb.execute(conn);
+		return Httpnb.execute(conn, null);
 
 	}
 }

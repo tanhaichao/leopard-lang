@@ -34,7 +34,7 @@ public class Httpnb {
 		HttpHeader header = new HttpHeaderDeleteImpl(timeout);
 		try {
 			HttpURLConnection conn = header.openConnection(url);
-			return execute(conn);
+			return execute(conn, null);
 		}
 		catch (IOException e) {
 			throw new HttpException(e, header);
@@ -46,10 +46,14 @@ public class Httpnb {
 	}
 
 	public static String doGet(String url, long timeout) {
+		return doGet(url, timeout, null);
+	}
+
+	public static String doGet(String url, long timeout, String charsetName) {
 		HttpHeader header = new HttpHeaderGetImpl(timeout);
 		try {
 			HttpURLConnection conn = header.openConnection(url);
-			return execute(conn);
+			return execute(conn, charsetName);
 		}
 		catch (IOException e) {
 			throw new HttpException(e, header);
@@ -87,7 +91,7 @@ public class Httpnb {
 		}
 		try {
 			HttpURLConnection conn = header.openConnection(url);
-			return execute(conn);
+			return execute(conn, null);
 		}
 		catch (IOException e) {
 			throw new HttpException(e, header);
@@ -107,7 +111,7 @@ public class Httpnb {
 		}
 		try {
 			HttpURLConnection conn = header.openConnection(url);
-			return execute(conn);
+			return execute(conn, null);
 		}
 		catch (IOException e) {
 			throw new HttpException(e, header);
@@ -117,7 +121,7 @@ public class Httpnb {
 	public static String execute(String url, HttpHeader header) {
 		try {
 			HttpURLConnection conn = header.openConnection(url);
-			return execute(conn);
+			return execute(conn, null);
 		}
 		catch (IOException e) {
 			throw new HttpException(e, header);
@@ -168,9 +172,13 @@ public class Httpnb {
 	// ds.flush();
 	// }
 
-	public static String execute(HttpURLConnection conn) throws IOException {
+	// public static String execute(HttpURLConnection conn) throws IOException {
+	// return execute(conn, null);
+	// }
+
+	public static String execute(HttpURLConnection conn, String charsetName) throws IOException {
 		StringBuilder sb = new StringBuilder();
-		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), charsetName));
 		String str;
 		while ((str = in.readLine()) != null) {
 			if (sb.length() > 0) {

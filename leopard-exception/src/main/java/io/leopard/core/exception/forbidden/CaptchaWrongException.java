@@ -10,10 +10,13 @@ import io.leopard.core.exception.ForbiddenException;
  */
 public class CaptchaWrongException extends ForbiddenException {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	public CaptchaWrongException(String securityCode) {
+		this(securityCode, null);
+	}
+
+	public CaptchaWrongException(String securityCode, String apiMessage) {
 		super("错误的验证码[" + securityCode + "].");
 	}
 

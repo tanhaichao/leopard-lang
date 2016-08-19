@@ -12,4 +12,8 @@ public class InvalidException extends LeopardRuntimeException {
 	public InvalidException(String message) {
 		super(message);
 	}
+
+	public InvalidException(String message, String apiMessage) {
+		super(message, apiMessage);
+	}
 }

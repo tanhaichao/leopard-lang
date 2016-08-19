@@ -19,6 +19,11 @@ public class LeopardRuntimeException extends RuntimeException implements ApiExce
 		super(message);
 	}
 
+	public LeopardRuntimeException(String message, String apiMessage) {
+		super(message);
+		this.apiMessage = apiMessage;
+	}
+
 	public LeopardRuntimeException(Throwable cause) {
 		super(cause.getMessage(), cause);
 	}
@@ -32,9 +37,8 @@ public class LeopardRuntimeException extends RuntimeException implements ApiExce
 		return apiMessage;
 	}
 
-	public LeopardRuntimeException setApiMessage(String apiMessage) {
+	public void setApiMessage(String apiMessage) {
 		this.apiMessage = apiMessage;
-		return this;
 	}
 
 }

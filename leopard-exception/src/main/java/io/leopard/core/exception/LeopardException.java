@@ -8,11 +8,12 @@ package io.leopard.core.exception;
  */
 public class LeopardException extends Exception {
 
-	// private String message;
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 在JSON接口时使用，比如转成英文
+	 */
+	private String apiMessage;
 
 	public LeopardException() {
 		super();
@@ -26,6 +27,14 @@ public class LeopardException extends Exception {
 		super(cause.getMessage(), cause);
 	}
 
+	public String getApiMessage() {
+		return apiMessage;
+	}
+
+	public void setApiMessage(String apiMessage) {
+		this.apiMessage = apiMessage;
+	}
+
 	/**
 	 * 该接口用于生成文档.
 	 * 
@@ -35,16 +44,4 @@ public class LeopardException extends Exception {
 		return null;
 	}
 
-	// public void setMessage(String message) {
-	// this.message = message;
-	// }
-	//
-	// public String getMessage() {
-	// if (message == null || message.length() == 0) {
-	// return super.getMessage();
-	// }
-	// else {
-	// return this.message;
-	// }
-	// }
 }

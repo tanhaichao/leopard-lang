@@ -6,10 +6,10 @@ package io.leopard.core.exception;
  * @author 阿海
  * 
  */
-public class LeopardRuntimeException extends RuntimeException {
+public class LeopardRuntimeException extends RuntimeException implements ApiException {
 
 	protected static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * 在JSON接口时使用，比如转成英文
 	 */
@@ -27,6 +27,7 @@ public class LeopardRuntimeException extends RuntimeException {
 		super(msg, cause);
 	}
 
+	@Override
 	public String getApiMessage() {
 		return apiMessage;
 	}

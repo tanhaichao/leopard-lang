@@ -6,7 +6,7 @@ package io.leopard.core.exception;
  * @author 阿海
  * 
  */
-public class LeopardException extends Exception {
+public class LeopardException extends Exception implements ApiException {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +27,7 @@ public class LeopardException extends Exception {
 		super(cause.getMessage(), cause);
 	}
 
+	@Override
 	public String getApiMessage() {
 		return apiMessage;
 	}

@@ -14,6 +14,10 @@ public class ForbiddenException extends LeopardException {
 		super(message);
 	}
 
+	public ForbiddenException(String message, String apiMessage) {
+		super(message, apiMessage);
+	}
+
 	@Override
 	public String getDesc() {
 		return "没有权限.";

@@ -23,6 +23,11 @@ public class LeopardException extends Exception implements ApiException {
 		super(message);
 	}
 
+	public LeopardException(String message, String apiMessage) {
+		super(message);
+		this.apiMessage = apiMessage;
+	}
+
 	public LeopardException(Throwable cause) {
 		super(cause.getMessage(), cause);
 	}

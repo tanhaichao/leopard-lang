@@ -17,7 +17,7 @@ public class CaptchaWrongException extends ForbiddenException {
 	}
 
 	public CaptchaWrongException(String securityCode, String apiMessage) {
-		super("错误的验证码[" + securityCode + "].");
+		super("错误的验证码[" + securityCode + "].", apiMessage);
 	}
 
 }

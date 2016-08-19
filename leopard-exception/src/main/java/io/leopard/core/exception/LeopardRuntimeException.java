@@ -32,8 +32,9 @@ public class LeopardRuntimeException extends RuntimeException implements ApiExce
 		return apiMessage;
 	}
 
-	public void setApiMessage(String apiMessage) {
+	public LeopardRuntimeException setApiMessage(String apiMessage) {
 		this.apiMessage = apiMessage;
+		return this;
 	}
 
 }

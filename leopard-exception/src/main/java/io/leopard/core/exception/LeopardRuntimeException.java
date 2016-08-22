@@ -1,5 +1,7 @@
 package io.leopard.core.exception;
 
+import java.lang.reflect.Field;
+
 /**
  * 顶层RuntimeException
  * 
@@ -30,6 +32,17 @@ public class LeopardRuntimeException extends RuntimeException implements ApiExce
 
 	public LeopardRuntimeException(String msg, Throwable cause) {
 		super(msg, cause);
+	}
+
+	public void setMessage(String message) {
+		try {
+			Field field = Throwable.class.getDeclaredField("detailMessage");
+			field.setAccessible(true);
+			field.set(this, message);
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 
 	@Override

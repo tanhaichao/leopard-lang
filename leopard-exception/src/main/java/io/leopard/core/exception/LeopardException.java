@@ -36,7 +36,7 @@ public class LeopardException extends Exception implements ApiException {
 
 	public void setMessage(String message) {
 		try {
-			Field field = Exception.class.getField("detailMessage");
+			Field field = Throwable.class.getDeclaredField("detailMessage");
 			field.setAccessible(true);
 			field.set(this, message);
 		}

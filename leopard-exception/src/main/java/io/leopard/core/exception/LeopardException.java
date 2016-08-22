@@ -1,5 +1,7 @@
 package io.leopard.core.exception;
 
+import java.lang.reflect.Field;
+
 /**
  * 顶层显示异常类
  * 
@@ -30,6 +32,17 @@ public class LeopardException extends Exception implements ApiException {
 
 	public LeopardException(Throwable cause) {
 		super(cause.getMessage(), cause);
+	}
+
+	public void setMessage(String message) {
+		try {
+			Field field = Exception.class.getField("detailMessage");
+			field.setAccessible(true);
+			field.set(this, message);
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e.getMessage(), e);
+		}
 	}
 
 	@Override

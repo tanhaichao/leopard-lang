@@ -4,10 +4,13 @@ package io.leopard.web.servlet;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Enumeration;
 import java.util.regex.Matcher;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -17,7 +20,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * @author 阿海
  */
 public class RequestUtil {
-	// private static final Log logger = LogFactory.getLog(RequestUtil.class);
+	private static final Log logger = LogFactory.getLog(RequestUtil.class);
 
 	/**
 	 * 获取代理服务器IP. .
@@ -180,19 +183,19 @@ public class RequestUtil {
 	// return pageid;
 	// }
 
-	// /**
-	// * 打印header信息.
-	// *
-	// * @param request
-	// */
-	// public static void printHeaders(HttpServletRequest request) {
-	// Enumeration<String> e = request.getHeaderNames();
-	// while (e.hasMoreElements()) {
-	// String name = e.nextElement();
-	// String value = request.getHeader(name);
-	// logger.info(name + ":" + value);
-	// }
-	// }
+	/**
+	 * 打印header信息.
+	 *
+	 * @param request
+	 */
+	public static void printHeaders(HttpServletRequest request) {
+		Enumeration<String> e = request.getHeaderNames();
+		while (e.hasMoreElements()) {
+			String name = e.nextElement();
+			String value = request.getHeader(name);
+			logger.info("header " + name + ":" + value);
+		}
+	}
 
 	private static final java.util.regex.Pattern IS_LICIT_IP_PATTERN = java.util.regex.Pattern.compile("^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$");
 
@@ -213,19 +216,19 @@ public class RequestUtil {
 		// return true;
 	}
 
-	// /**
-	// * 打印请求中的对象.
-	// *
-	// * @param request
-	// */
-	// public static void printAttributes(HttpServletRequest request) {
-	// Enumeration<String> e = request.getAttributeNames();
-	// while (e.hasMoreElements()) {
-	// String name = e.nextElement();
-	// Object value = request.getAttribute(name);
-	// logger.info(name + ":" + value);
-	// }
-	// }
+	/**
+	 * 打印请求中的对象.
+	 *
+	 * @param request
+	 */
+	public static void printAttributes(HttpServletRequest request) {
+		Enumeration<String> e = request.getAttributeNames();
+		while (e.hasMoreElements()) {
+			String name = e.nextElement();
+			Object value = request.getAttribute(name);
+			logger.info("attribute " + name + ":" + value);
+		}
+	}
 
 	/**
 	 * 获取上次访问的地址.

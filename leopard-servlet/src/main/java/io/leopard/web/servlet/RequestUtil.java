@@ -205,7 +205,7 @@ public class RequestUtil {
 	 * @param ip
 	 * @return
 	 */
-	public static boolean isLicitIp(final String ip) {
+	public static boolean isValidIp(final String ip) {
 		if (ip == null || ip.length() == 0) {
 			return false;
 		}

@@ -197,7 +197,7 @@ public class RequestUtil {
 		}
 	}
 
-	private static final java.util.regex.Pattern IS_LICIT_IP_PATTERN = java.util.regex.Pattern.compile("^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$");
+	private static final java.util.regex.Pattern IS_VALID_IP_PATTERN = java.util.regex.Pattern.compile("^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$");
 
 	/**
 	 * 判断IP是否合法.
@@ -209,7 +209,7 @@ public class RequestUtil {
 		if (ip == null || ip.length() == 0) {
 			return false;
 		}
-		Matcher m = IS_LICIT_IP_PATTERN.matcher(ip);
+		Matcher m = IS_VALID_IP_PATTERN.matcher(ip);
 		return m.find();
 		// return false;
 		// }

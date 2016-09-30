@@ -12,12 +12,12 @@ public class CaptchaWrongException extends LeopardRuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public CaptchaWrongException(String securityCode) {
-		this(securityCode, null);
+	public CaptchaWrongException(String message) {
+		this(message, null);
 	}
 
-	public CaptchaWrongException(String securityCode, String apiMessage) {
-		super("错误的验证码[" + securityCode + "].", apiMessage);
+	public CaptchaWrongException(String message, String apiMessage) {
+		super(message, apiMessage);
 	}
 
 }

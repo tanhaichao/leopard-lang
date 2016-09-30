@@ -1,6 +1,6 @@
 package io.leopard.core.exception.forbidden;
 
-import io.leopard.core.exception.ForbiddenException;
+import io.leopard.core.exception.LeopardRuntimeException;
 
 /**
  * 错误的验证码.
@@ -8,7 +8,7 @@ import io.leopard.core.exception.ForbiddenException;
  * @author 谭海潮
  *
  */
-public class CaptchaWrongException extends ForbiddenException {
+public class CaptchaWrongException extends LeopardRuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

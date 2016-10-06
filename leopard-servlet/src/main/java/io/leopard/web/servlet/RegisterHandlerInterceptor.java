@@ -51,8 +51,20 @@ public abstract class RegisterHandlerInterceptor implements HandlerInterceptor, 
 		return false;
 	}
 
+	/**
+	 * 是否注册.
+	 * 
+	 * @return
+	 */
+	protected boolean isRegister() {
+		return true;
+	}
+
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+		if (!this.isRegister()) {
+			return;
+		}
 		ConfigurableListableBeanFactory factory = ((ConfigurableListableBeanFactory) beanFactory);
 		for (String beanName : factory.getBeanDefinitionNames()) {
 			BeanDefinition beanDefinition = factory.getBeanDefinition(beanName);

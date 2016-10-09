@@ -34,9 +34,9 @@ public class MonthPeriod implements Period {
 	 * @return
 	 */
 	public int getSeconds() {
-		// TODO ahai 未做测试
+		// TODO ahai 如果当月时间未到呢？
 		Calendar cld = Calendar.getInstance();
-		cld.set(Calendar.MONTH, cld.get(Calendar.MONTH) + 1);
+		cld.add(Calendar.MONTH, 1);
 		cld.set(Calendar.DAY_OF_MONTH, day);
 		cld.set(Calendar.HOUR_OF_DAY, this.hour);
 		cld.set(Calendar.MINUTE, this.minute);
